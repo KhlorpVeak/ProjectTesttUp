@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-    <link rel="stylesheet" href="../Styles/StylesHome.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Count Up Animation</title>
+  <style>
+    .counter {
+      font-size: 48px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div>
-        <h1>Hello</h1>
-    </div>
+  <div class="counter" id="counter">0</div>
+
+  <script>
+    // Target element
+    const counterElement = document.getElementById('counter');
+    
+    // Set target value and starting point
+    let currentValue = 0;
+    const targetValue = 1000;
+    const increment = 5; // The step value for the counter
+    const intervalTime = 10; // Time in milliseconds for each increment
+
+    // Create a function that increments the number
+    const countUp = () => {
+      if (currentValue < targetValue) {
+        currentValue += increment;
+        counterElement.innerText = currentValue > targetValue ? targetValue : currentValue;
+      } else {
+        clearInterval(intervalId); // Stop the interval when target is reached
+      }
+    };
+
+    // Set an interval to update the number
+    const intervalId = setInterval(countUp, intervalTime);
+  </script>
 </body>
 </html>
